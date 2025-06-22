@@ -7,6 +7,7 @@ export interface Post {
   content: string;
   created_at: string;
   updated_at: string;
+  category: string;
 }
 
 export function useGetPosts() {
@@ -25,4 +26,26 @@ export function useGetPosts() {
   }, []);
 
   return { data, loading, error };
+}
+
+export function useCreatePost() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [success, setSuccess] = useState(false);
+
+  const createPost = async (title: string, content: string, category: string) => {
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
+    try {
+      await axios.post("http://localhost:4000/posts", { title, content, category });
+      setSuccess(true);
+    } catch (err) {
+      setError(err as Error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { createPost, loading, error, success };
 }

@@ -4,11 +4,11 @@ import { Outlet } from "react-router";
 
 function Layout() {
   return (
-    <div className="todoapp">
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 }
 
