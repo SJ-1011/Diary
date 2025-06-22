@@ -11,11 +11,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { title, content } = req.body;
-  const sql = "INSERT INTO posts (title, content) VALUES (?, ?)";
-  db.query(sql, [title, content], (err, result) => {
+  const { title, content, category } = req.body;
+  const sql = "INSERT INTO posts (title, content, category) VALUES (?, ?, ?)";
+  db.query(sql, [title, content, category], (err, result) => {
     if (err) return res.status(500).json(err);
-    res.status(201).json({ id: result.insertId, title, content });
+    res.status(201).json({ id: result.insertId, title, content, category });
   });
 });
 
