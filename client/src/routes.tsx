@@ -4,6 +4,7 @@ import ErrorPage from "@pages/ErrorPage";
 import Home from "@pages/Home";
 import Diary from "@pages/Diary";
 import AddDiary from "@pages/AddDiary";
+import DiaryInfo from "@pages/DiaryInfo";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "diary/add",
         element: <AddDiary />,
+      },
+      {
+        path: "diary/info/:id",
+        element: <DiaryInfo />,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { useGetPosts } from "@hooks/useAxios";
 import { useState } from "react";
+import { Link } from "react-router";
 
 interface CardProps {
   id?: number;
@@ -62,9 +63,9 @@ function Card({ id }: CardProps) {
               {post.content}
             </p>
             <small className="block text-right">{post.updated_at}</small>
-            <button type="button" className="absolute bottom-4 cursor-pointer bg-green-700 py-2 px-4 rounded-4xl text-white">
+            <Link to={`/diary/info/${post.id}`} className="absolute bottom-4 cursor-pointer bg-green-700 py-2 px-4 rounded-4xl text-white">
               상세보기
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
